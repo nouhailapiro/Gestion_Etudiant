@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../index.css'
 
 
 const Notes = () => {
@@ -20,7 +21,7 @@ const Notes = () => {
   return (
     <div>
       <h1>Notes de l'Étudiant</h1>
-      <table border="1">
+      { notes.length != 0 ? <table border="1">
         <thead>
           <tr>
             <th>Nom du Cours</th>
@@ -31,11 +32,12 @@ const Notes = () => {
           {notes.map((note) => (
             <tr key={note.id}>
               <td>{note.nomCours}</td>
-              <td>{note.valeurNote}</td>
+              <td className={note.valeurNote >= 10 ? "green" : "red"}>{note.valeurNote}</td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> : <p>Cet étudiant n'a pas encore de notes !</p>}
+      
       <button onClick={() => navigate(`/etudiant/${id}/ajouterNote`)}>Ajouter une note</button>
     </div>
   );

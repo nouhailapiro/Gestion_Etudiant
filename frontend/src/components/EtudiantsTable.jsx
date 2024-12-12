@@ -11,6 +11,7 @@ const EtudiantTable = () => {
     axios.get('http://localhost:8080/api/etudiants')
       .then((response) => {
         setEtudiants(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération des étudiants:", error)
@@ -26,8 +27,8 @@ const EtudiantTable = () => {
 
     axios.post('http://localhost:8080/api/etudiants', { nom: newNom })
       .then((response) => {
-        setEtudiants([...etudiants, response.data]); // Ajouter le nouvel étudiant à la liste
-        setNewNom(""); // Réinitialiser le champ de saisie
+        setEtudiants([...etudiants, response.data]);
+        setNewNom("");
       })
       .catch((error) => {
         console.error("Erreur lors de l'ajout de l'étudiant :", error);
@@ -37,6 +38,15 @@ const EtudiantTable = () => {
   const handleEtudiantClick = (id) => {
     navigate(`/etudiants/${id}`);
   };
+
+  const calculerMoyenne = (notes) => {
+    if(!notes || notes.lenght === 0){
+      return 0;
+    }
+
+    const somme = notes.reduce((total, note) => total + note, 0);
+    return somme / notes.length;
+  }
 
   return(
     <div>
@@ -52,7 +62,7 @@ const EtudiantTable = () => {
         <button type="submit">Ajouter Étudiant</button>
       </form>
 
-      <table border="1">
+      <table>
         <thead>
           <tr>
             <th>Nom</th>
@@ -60,13 +70,16 @@ const EtudiantTable = () => {
           </tr>
         </thead>
         <tbody>
-          {etudiants.map((etudiant) => (
-            <tr key={etudiant.id} onClick={() => handleEtudiantClick(etudiant.id)}>
-              <td>{etudiant.nom}</td>
-              <td>{etudiant.dateCreation}</td>
-            </tr>
-          ))}
-        </tbody>
+  {etudiants.map((etudiant) => {
+    const moyenne = calculerMoyenne(etudiant.notes.map((note) => note.valeurNote));
+    return (
+      <tr key={etudiant.id} onClick={() => handleEtudiantClick(etudiant.id)}>
+        <td className={moyenne >= 10 ? "green" : "red"}>{etudiant.nom}</td>
+        <td>{etudiant.dateCreation}</td>
+      </tr>
+    );
+  })}
+</tbody>
       </table>
     </div>
   );

@@ -24,10 +24,11 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  place-items: center;
 }
 
 h1 {
@@ -37,7 +38,7 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid ;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -52,6 +53,64 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+input{
+  border-radius: 4px;
+  padding : 12px 15px;
+  margin: 10px 5px;
+  font-size: 1em;
+  font-family: inherit;
+  border: 1px solid gray;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; 
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+  background-color: #f9f9f9;
+}
+
+
+th {
+  background-color: #646cff;
+  color: white;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd; 
+}
+
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.green{
+  color: green;
+}
+
+.red{
+  color: red;
 }
 
 @media (prefers-color-scheme: light) {
