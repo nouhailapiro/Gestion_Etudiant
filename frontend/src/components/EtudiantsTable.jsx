@@ -71,7 +71,8 @@ const EtudiantTable = () => {
         </thead>
         <tbody>
   {etudiants.map((etudiant) => {
-    const moyenne = calculerMoyenne(etudiant.notes.map((note) => note.valeurNote));
+    const moyenne = calculerMoyenne(etudiant.notes ? etudiant.notes.map((note) => note.valeurNote) : []);
+
     return (
       <tr key={etudiant.id} onClick={() => handleEtudiantClick(etudiant.id)}>
         <td className={moyenne >= 10 ? "green" : "red"}>{etudiant.nom}</td>
