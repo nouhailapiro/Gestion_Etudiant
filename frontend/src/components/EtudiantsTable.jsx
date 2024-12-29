@@ -8,7 +8,7 @@ const EtudiantTable = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/etudiants')
+    axios.get('http://api.exam-kubernetes.com/api/etudiants')
       .then((response) => {
         setEtudiants(response.data);
         console.log(response.data);
@@ -25,7 +25,7 @@ const EtudiantTable = () => {
       return;
     }
 
-    axios.post('http://localhost:8080/api/etudiants', { nom: newNom })
+    axios.post('http://api.exam-kubernetes.com/api/etudiants', { nom: newNom })
       .then((response) => {
         setEtudiants([...etudiants, response.data]);
         setNewNom("");

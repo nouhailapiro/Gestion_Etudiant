@@ -11,7 +11,7 @@ const Notes = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/notes/etudiant/${id}`)
+    axios.get(`http://api.exam-kubernetes.com/api/notes/etudiant/${id}`)
       .then((response) => {
         setNotes(response.data)
       })

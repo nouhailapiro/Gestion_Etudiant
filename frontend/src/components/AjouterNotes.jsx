@@ -17,7 +17,7 @@ const AjouterNote = () => {
       idEtudiant: parseInt(id),
     };
 
-    axios.post('http://localhost:8080/api/notes', noteData)
+    axios.post('http://api.exam-kubernetes.com/api/notes', noteData)
       .then(() => {
         alert('Note ajoutée avec succès');
         navigate(`/etudiants/${id}`); // Retour à la page des notes

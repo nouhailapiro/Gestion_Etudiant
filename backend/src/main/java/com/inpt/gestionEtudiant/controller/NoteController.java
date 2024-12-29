@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
+// import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +19,7 @@ import com.inpt.gestionEtudiant.entities.Note;
 import com.inpt.gestionEtudiant.service.NoteService;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:5173")
+// @CrossOrigin(origins = "*")
 @RequestMapping("/api/notes")
 public class NoteController {
   private final NoteService noteService;

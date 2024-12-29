@@ -1,0 +1,32 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: backend-pdb
+  namespace: exam  
+spec:
+  minAvailable: 1  # Au moins 1 pod doit être disponible
+  selector:
+    matchLabels:
+      app: backend  # label des pods du backend
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: frontend-pdb
+  namespace: exam  
+spec:
+  minAvailable: 1  # Au moins 1 pod doit être disponible
+  selector:
+    matchLabels:
+      app: frontend  # label des pods du frontend
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: database-pdb
+  namespace: exam  
+spec:
+  minAvailable: 1  # Au moins 1 pod doit être disponible
+  selector:
+    matchLabels:
+      app: database  # label des pods de la database
